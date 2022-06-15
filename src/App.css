@@ -1,38 +1,327 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ol,
+ul {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p {
+  line-height: 2;
+  word-wrap: break-word;
+  white-space: normal;
+}
+/*******************************************/
+.header{
+  /* background-image: url("./assets/bg2.jpg"); */
+  background-image: linear-gradient(to top right, #8d009c, #320063);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  min-height: 400px;
+}
+.logo{
+  font-family: 'Sacramento';
+  font-size: 36px;
+  font-weight: 700;
+}
+.nav-section{
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: transparent;
+  width: auto;
+  height: 60px;
+  padding: 2.2rem 5rem;
+}
+.nav-bar {
+  display: inline-flex;
+  align-items: center;
+}
+.nav-link{
+  font-size: 1em;
+  letter-spacing: .5px;
+  font-style: normal;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  position: relative;
+  color: hsla(0, 0%, 100%, .6);
+  margin: 0 0 0 2rem;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #0fe6e6;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.get-in-touch-button{
+  display: block;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #0fe6e6;
+  color: #220f5e;
+  border-radius: 5rem;
+  border: none;
+  margin: 0 0 0 2rem;
+  padding: 0.8rem;
+  width: 90%;
+  transition: background-color .5s, color .5s;
+}
+/*******************************************/
+.contact {
+  background-color: #000000;
+  width: 100%;
+  height: 100vh;
+}
+
+/***************/
+#fp-nav {
+  position: fixed;
+  z-index: 100;
+  margin-top: -32px;
+  top: 50%;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+#fp-nav.right {
+  right: 17px;
+}
+
+#fp-nav ul,
+.fp-slidesNav ul {
+  margin: 0;
+  padding: 0;
+}
+
+#fp-nav ul li,
+.fp-slidesNav ul li {
+  display: block;
+  width: 14px;
+  height: 13px;
+  margin: 7px;
+  position: relative;
+}
+
+.fp-slidesNav ul li {
+  display: inline-block;
+}
+
+#fp-nav ul li a,
+.fp-slidesNav ul li a {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span {
+  height: 12px;
+  width: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 100%;
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  height: 4px;
+  width: 4px;
+  border: 0;
+  background: #333;
+  left: 50%;
+  top: 50%;
+  margin: -2px 0 0 -2px;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0px 0px -5px;
+}
+
+#fp-nav ul li .fp-tooltip {
+  position: absolute;
+  top: -2px;
+  color: #fff;
+  font-size: 14px;
+  font-family: arial, helvetica, sans-serif;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  display: block;
+  opacity: 0;
+  width: 0;
+  cursor: pointer;
+}
+
+#fp-nav ul li:hover .fp-tooltip,
+#fp-nav.fp-show-active a.active+.fp-tooltip {
+  -webkit-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  width: auto;
+  opacity: 1;
+}
+
+#fp-nav ul li .fp-tooltip.right {
+  right: 20px;
+}
+
+#fp-nav ul li .fp-tooltip.left {
+  left: 20px;
+}
+
+/****************/
+#fp-nav {
+  margin: 0;
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+  width: 40px;
+  left: 40px;
+  overflow: hidden
+}
+
+@media screen and (max-width:1250px) {
+  #fp-nav {
+    width: auto;
+    top: auto;
+    left: 50%;
+    bottom: 32px;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0)
   }
 }
+
+@media screen and (max-width:420px) {
+  #fp-nav {
+    bottom: 20px
+  }
+}
+
+@media screen and (max-width:1250px) {
+  #fp-nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end
+  }
+}
+
+#fp-nav ul li {
+  height: 3px;
+  margin: 0 0 40px
+}
+
+@media screen and (max-width:1250px) {
+  #fp-nav ul li {
+    height: auto;
+    margin: 0 28px
+  }
+}
+
+@media screen and (max-width:420px) {
+  #fp-nav ul li {
+    margin: 0 12px
+  }
+}
+
+#fp-nav ul li a {
+  width: 24px;
+  height: 100%;
+  background: #fff;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s
+}
+
+#fp-nav ul li a span {
+  display: none
+}
+
+@media screen and (max-width:1250px) {
+  #fp-nav ul li a {
+    width: 3px;
+    height: 24px
+  }
+}
+
+@media screen and (max-width:420px) {
+  #fp-nav ul li a {
+    width: 2px;
+    height: 16px
+  }
+}
+
+#fp-nav ul li:last-child {
+  margin-bottom: 0
+}
+
+#fp-nav ul li .active {
+  width: 40px
+}
+
+@media screen and (max-width:1250px) {
+  #fp-nav ul li .active {
+    width: 3px;
+    height: 40px
+  }
+}
+
+@media screen and (max-width:420px) {
+  #fp-nav ul li .active {
+    width: 2px;
+    height: 32px
+  }
+}
+
