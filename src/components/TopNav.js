@@ -3,11 +3,11 @@ import "../css/topNav.css";
 
 function TopNav() {
   const navigation = [
-    { link: "#header", text: "HOME" },
-    { link: "#about", text: "ABOUT" },
-    { link: "#work", text: "WORK" },
-    { link: "#myskill", text: "SKILL" },
-    { link: "#contact", text: "CONTACT" },
+    { link: "#header", text: "Home" },
+    { link: "#about", text: "About" },
+    { link: "#myskill", text: "Skill" },
+    { link: "#work", text: "Work" },
+    { link: "#contact", text: "Contact" },
   ];
   const menuBtnRef = useRef();
   const mobileMenuRef = useRef();
